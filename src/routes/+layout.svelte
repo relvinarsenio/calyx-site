@@ -1,8 +1,8 @@
 <script lang="ts">
 	import './layout.css';
-	import { env } from '$env/dynamic/public';
+	import { page } from '$app/state';
 
-	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL;
+	const PUBLIC_SITE_URL = page.url.origin;
 
 	let { children } = $props();
 

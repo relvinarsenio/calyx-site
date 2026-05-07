@@ -59,14 +59,6 @@ npm run build
 
 This project is configured to deploy seamlessly to **Cloudflare Pages**.
 
-### Environment Variables
-
-Before deploying, ensure the following environment variables are set in the Cloudflare Pages dashboard:
-
-| Variable | Description | Example |
-| :--- | :--- | :--- |
-| `PUBLIC_SITE_URL` | The base URL of your deployment (used for SEO & commands). | `https://calyx.pages.dev` |
-
 ### Build Settings
 
 1. Connect your GitHub repository to Cloudflare Pages.

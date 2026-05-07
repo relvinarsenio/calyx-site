@@ -2,9 +2,9 @@
   import { onMount } from 'svelte';
   import { Terminal, Cpu, HardDrive, Copy, Check } from 'lucide-svelte';
   import GithubIcon from '$lib/components/GithubIcon.svelte';
-  import { env } from '$env/dynamic/public';
+  import { page } from '$app/state';
 
-  const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL;
+  const PUBLIC_SITE_URL = page.url.origin;
 
   let copied = $state(false);
   let systemTime = $state('');
