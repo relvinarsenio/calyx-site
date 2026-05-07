@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f2f2f2;
+  --color-ink: #111111;
+  --color-line: #e0e0e0;
+  --font-inter: "Inter", sans-serif;
+  --font-fira-code: "Fira Code", monospace;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-inter);
+}
+
+@layer utilities {
+  .col-header {
+    @apply font-mono text-[10px] uppercase tracking-widest text-[#111111]/60 select-none;
+  }
+  .grid-line-bottom {
+    @apply border-b border-[#e0e0e0] relative;
+  }
+  .grid-line-bottom::after {
+    content: '';
+    @apply absolute -bottom-px left-0 right-0 h-px bg-current opacity-20 hidden md:block;
+  }
+  .grid-line-right {
+    @apply relative;
+  }
+  .grid-line-right::after {
+    content: '';
+    @apply absolute top-0 bottom-0 -right-4 w-px bg-[#e0e0e0] hidden md:block;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
