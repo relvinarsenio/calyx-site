@@ -1,6 +1,8 @@
 <script lang="ts">
 	import './layout.css';
-	import { PUBLIC_SITE_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
+
+	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL;
 
 	let { children } = $props();
 
