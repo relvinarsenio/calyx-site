@@ -149,7 +149,7 @@
 	</div>
 
 	<footer
-		class="mt-12 md:mt-16 w-full max-w-6xl mx-auto border-t border-line pt-6 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[10px] text-ink/50 uppercase tracking-widest animate-[fade-in-up_0.5s_ease-out_0.5s_both]"
+		class="mt-12 md:mt-16 w-full max-w-6xl mx-auto border-t border-line pt-6 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[10px] text-ink/65 uppercase tracking-widest animate-[fade-in-up_0.5s_ease-out_0.5s_both]"
 	>
 		<p>Copyright © 2025-2026 Alfie Ardinata.</p>
 		<a
