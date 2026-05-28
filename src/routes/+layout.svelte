@@ -2,16 +2,19 @@
 	import './layout.css';
 	import { page } from '$app/state';
 
-	const PUBLIC_SITE_URL = page.url.origin;
+	interface Props {
+		children: import('svelte').Snippet;
+	}
 
-	let { children } = $props();
+	let { children }: Props = $props();
 
-	const seo = {
-		title: 'Calyx - Benchmark Utility',
-		description: "The modern alternative to bench.sh. Calyx is a cli tool to check your server's specs and test exactly how fast your disk and internet are.",
-		url: PUBLIC_SITE_URL,
+	const seo = $derived({
+		title: 'Calyx - Server Benchmark Utility',
+		description:
+			'A modern alternative to bench.sh. Calyx runs directly in your terminal to check server specs, RAM usage, disk speed, and actual internet speed instantly.',
+		url: page.url.origin,
 		siteName: 'Calyx'
-	};
+	});
 </script>
 
 <svelte:head>

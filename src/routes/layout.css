@@ -1,64 +1,84 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-bg: #f2f2f2;
-  --color-ink: #111111;
-  --color-line: #e0e0e0;
-  --font-inter: "Inter", sans-serif;
-  --font-fira-code: "Fira Code", monospace;
+	--color-bg: #f2f2f2;
+	--color-ink: #111111;
+	--color-line: #e0e0e0;
+	--font-sans: 'Space Grotesk', sans-serif;
+	--font-mono: 'Space Mono', monospace;
+
+	--animate-float-card: float-gentle 6s ease-in-out infinite;
+
+	@keyframes float-gentle {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-5px);
+		}
+	}
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-ink);
-  font-family: var(--font-inter);
+	background-color: var(--color-bg);
+	color: var(--color-ink);
+	font-family: var(--font-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #121214;
+		--color-ink: #f2f2f3;
+		--color-line: #2d2d30;
+	}
 }
 
 @layer utilities {
-  .col-header {
-    @apply font-mono text-[10px] uppercase tracking-widest text-[#111111]/60 select-none;
-  }
-  .grid-line-bottom {
-    @apply border-b border-[#e0e0e0] relative;
-  }
-  .grid-line-bottom::after {
-    content: '';
-    @apply absolute -bottom-px left-0 right-0 h-px bg-current opacity-20 hidden md:block;
-  }
-  .grid-line-right {
-    @apply relative;
-  }
-  .grid-line-right::after {
-    content: '';
-    @apply absolute top-0 bottom-0 -right-4 w-px bg-[#e0e0e0] hidden md:block;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-  }
+	.col-header {
+		@apply font-mono text-[10px] tracking-widest text-ink/60 uppercase select-none;
+	}
+	.grid-line-bottom {
+		@apply relative border-b border-line;
+	}
+	.grid-line-bottom::after {
+		content: '';
+		@apply absolute right-0 -bottom-px left-0 hidden h-px bg-current opacity-20 md:block;
+	}
+	.grid-line-right {
+		@apply relative;
+	}
+	.grid-line-right::after {
+		content: '';
+		@apply absolute top-0 -right-4 bottom-0 hidden w-px bg-line md:block;
+	}
+	.scrollbar-hide {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none; /* Chrome, Safari and Opera */
+	}
 }
 
 @keyframes fade-in-down {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	0% {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	0% {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

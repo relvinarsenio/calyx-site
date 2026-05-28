@@ -1,10 +1,10 @@
-# Calyx — Benchmark Utility
+# Calyx — Server Benchmark Utility
 
 [![License: MPL-2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 [![Svelte](https://img.shields.io/badge/Svelte-5-ff3e00?logo=svelte)](https://svelte.dev)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38b2ac?logo=tailwind-css)](https://tailwindcss.com)
 
-The modern alternative to `bench.sh`. **Calyx** is a high-performance CLI tool and landing page designed to check your server's specs and test exactly how fast your disk and internet are.
+A modern alternative to `bench.sh`. **Calyx** runs directly in your terminal to check server specs, RAM usage, disk speed, and actual internet speed instantly.
 
 ## 🚀 Abstract
 
@@ -18,6 +18,7 @@ Calyx provides a sleek, terminal-inspired interface for monitoring and benchmark
 
 - **Framework**: [Svelte 5](https://svelte.dev) (Runes mode)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
+- **Typography**: [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) + [Space Mono](https://fonts.google.com/specimen/Space+Mono)
 - **Icons**: [Lucide Svelte](https://lucide.dev)
 - **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com/)
 - **Runtime**: [Cloudflare Workers](https://workers.cloudflare.com/) (via `@sveltejs/adapter-cloudflare`)
@@ -32,12 +33,14 @@ Calyx provides a sleek, terminal-inspired interface for monitoring and benchmark
 ### Installation & Development
 
 1. **Clone the repository**:
+
    ```sh
    git clone https://github.com/relvinarsenio/calyx.git
    cd calyx/svelte-site
    ```
 
 2. **Install dependencies**:
+
    ```sh
    npm install
    ```
