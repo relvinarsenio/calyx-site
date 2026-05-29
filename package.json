@@ -41,6 +41,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource/space-grotesk": "^5.2.10",
+		"@fontsource/space-mono": "^5.2.9",
 		"@lucide/svelte": "^1.17.0"
 	}
 }
