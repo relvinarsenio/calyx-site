@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Terminal, Cpu, HardDrive, Copy, Check } from 'lucide-svelte';
+	import { Gauge, Cpu, HardDrive, Copy, Check } from 'lucide-svelte';
 	import GithubIcon from '$lib/components/GithubIcon.svelte';
 	import { page } from '$app/state';
 
@@ -90,7 +90,7 @@
 						>
 					</div>
 					<div class="flex items-center gap-3 w-full">
-						<Terminal class="w-4 h-4 text-ink/70" />
+						<Gauge class="w-4 h-4 text-ink/70" />
 						<span class="font-mono text-xs uppercase tracking-widest text-ink/80"
 							>Network Speed</span
 						>
