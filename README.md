@@ -27,8 +27,7 @@ Calyx provides a sleek, terminal-inspired interface for monitoring and benchmark
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v20 or later)
-- [npm](https://www.npmjs.com/)
+- [Bun](https://bun.sh/) (v1.1 or later) or [Node.js](https://nodejs.org/) (v20 or later)
 
 ### Installation & Development
 
@@ -42,12 +41,14 @@ Calyx provides a sleek, terminal-inspired interface for monitoring and benchmark
 2. **Install dependencies**:
 
    ```sh
-   npm install
+   bun install
+   # or npm install / pnpm install
    ```
 
 3. **Start development server**:
    ```sh
-   npm run dev
+   bun run dev
+   # or npm run dev
    ```
 
 ### Building for Production
@@ -55,7 +56,8 @@ Calyx provides a sleek, terminal-inspired interface for monitoring and benchmark
 To create a production version of the site optimized for Cloudflare:
 
 ```sh
-npm run build
+bun run build
+# or npm run build
 ```
 
 ## 🌐 Deployment

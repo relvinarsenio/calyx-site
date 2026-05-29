@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { Gauge, Cpu, HardDrive, Copy, Check } from 'lucide-svelte';
+	import { Gauge, Cpu, HardDrive, Copy, Check } from '@lucide/svelte';
 	import GithubIcon from '$lib/components/GithubIcon.svelte';
 	import { page } from '$app/state';
 
