@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
-	--color-bg: #f2f2f2;
-	--color-ink: #111111;
-	--color-line: #e0e0e0;
+	--color-bg: light-dark(#f2f2f2, #121214);
+	--color-ink: light-dark(#111111, #f2f2f3);
+	--color-line: light-dark(#e0e0e0, #2d2d30);
 	--font-sans: 'Space Grotesk', sans-serif;
 	--font-mono: 'Space Mono', monospace;
 
@@ -18,67 +18,152 @@
 			transform: translateY(-5px);
 		}
 	}
+	@keyframes fade-in-down {
+		0% {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	@keyframes fade-in-up {
+		0% {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	@keyframes draw-line-horizontal {
+		0% {
+			transform: scaleX(0);
+		}
+		100% {
+			transform: scaleX(1);
+		}
+	}
+	@keyframes draw-line-vertical {
+		0% {
+			transform: scaleY(0);
+		}
+		100% {
+			transform: scaleY(1);
+		}
+	}
+	@keyframes typing-calyx {
+		from {
+			width: 0;
+		}
+		to {
+			width: 5ch;
+		}
+	}
+	@keyframes blink-cursor {
+		50% {
+			border-color: transparent;
+		}
+	}
+	@keyframes hide-cursor {
+		to {
+			border-color: transparent;
+		}
+	}
+	@keyframes typing-command {
+		from {
+			width: 0;
+		}
+		to {
+			width: calc(var(--length) * 1ch);
+		}
+	}
 }
 
-body {
-	background-color: var(--color-bg);
-	color: var(--color-ink);
-	font-family: var(--font-sans);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
 	:root {
-		--color-bg: #121214;
-		--color-ink: #f2f2f3;
-		--color-line: #2d2d30;
+		color-scheme: light dark;
+	}
+	body {
+		@apply bg-bg font-sans text-ink;
 	}
 }
 
-@layer utilities {
-	.col-header {
-		@apply font-mono text-[10px] tracking-widest text-ink/60 uppercase select-none;
-	}
-	.grid-line-bottom {
-		@apply relative border-b border-line;
-	}
-	.grid-line-bottom::after {
+/* Custom Utilities using Tailwind v4 @utility directive */
+@utility col-header {
+	@apply font-mono text-[10px] tracking-widest text-ink/60 uppercase select-none;
+}
+
+@utility grid-line-bottom {
+	@apply relative;
+	&::after {
 		content: '';
-		@apply absolute right-0 -bottom-px left-0 hidden h-px bg-current opacity-20 md:block;
+		@apply absolute right-0 -bottom-px left-0 h-px bg-current opacity-25;
+		transform-origin: left;
+		animation: draw-line-horizontal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 	}
-	.grid-line-right {
-		@apply relative;
-	}
-	.grid-line-right::after {
+}
+
+@utility grid-line-right {
+	@apply relative;
+	&::after {
 		content: '';
 		@apply absolute top-0 -right-4 bottom-0 hidden w-px bg-line md:block;
+		transform-origin: top;
+		animation: draw-line-vertical 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 	}
-	.scrollbar-hide {
-		-ms-overflow-style: none; /* IE and Edge */
-		scrollbar-width: none; /* Firefox */
-	}
-	.scrollbar-hide::-webkit-scrollbar {
+}
+
+@utility scrollbar-hide {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	&::-webkit-scrollbar {
 		display: none; /* Chrome, Safari and Opera */
 	}
 }
 
-@keyframes fade-in-down {
-	0% {
-		opacity: 0;
-		transform: translateY(-10px);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
+@utility typewriter-calyx {
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	border-right: 2px solid var(--color-ink);
+	width: 0;
+	animation:
+		typing-calyx 0.6s steps(5, end) 0.2s forwards,
+		blink-cursor 0.6s step-end infinite,
+		hide-cursor 0.1s 1.2s forwards;
 }
 
-@keyframes fade-in-up {
-	0% {
-		opacity: 0;
-		transform: translateY(10px);
+@utility typewriter-command {
+	display: inline-block;
+	vertical-align: bottom;
+	overflow: hidden;
+	white-space: nowrap;
+	border-right: 2px solid var(--color-ink);
+	width: 0;
+	animation:
+		typing-command 1.5s steps(var(--length), end) 1s forwards,
+		blink-cursor 0.6s step-end infinite,
+		hide-cursor 0.1s 2.6s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-delay: 0s !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
 	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
+	.typewriter-calyx {
+		width: auto !important;
+		border-right: none !important;
+	}
+	.typewriter-command {
+		width: auto !important;
+		border-right: none !important;
+		animation: none !important;
 	}
 }
