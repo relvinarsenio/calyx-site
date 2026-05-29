@@ -1,0 +1,17 @@
+{
+	"appName": "Calyx",
+	"appTitle": "伺服器跑分工具",
+	"liveTime": "你這的目前時間",
+	"abstract": "這是啥？",
+	"description_prefix": "一個用來替代 ",
+	"description_suffix": " 的現代化小工具。直接在終端機跑，一鍵秒查伺服器規格、記憶體佔用、硬碟讀寫速度和真實網路速度。",
+	"systemInfo": "系統規格",
+	"diskBenchmark": "硬碟讀寫測試",
+	"networkSpeed": "網路速度測試",
+	"execProtocol": "怎麼運行",
+	"terminalCommand": "終端指令",
+	"copyCommand": "一鍵複製",
+	"commandCopied": "已複製！快去貼上",
+	"copyright": "Copyright",
+	"openSource": "開源 (MPL-2.0)"
+}

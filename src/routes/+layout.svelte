@@ -1,6 +1,9 @@
 <script lang="ts">
 	import './layout.css';
 	import { page } from '$app/state';
+	import { browser } from '$app/environment';
+	import { locale, _ } from 'svelte-i18n';
+	import '$lib/i18n';
 
 	interface Props {
 		children: import('svelte').Snippet;
@@ -8,10 +11,15 @@
 
 	let { children }: Props = $props();
 
+	$effect(() => {
+		if (browser && $locale) {
+			document.documentElement.lang = $locale;
+		}
+	});
+
 	const seo = $derived({
-		title: 'Calyx - Server Benchmark Utility',
-		description:
-			'A modern alternative to bench.sh. Calyx runs directly in your terminal to check server specs, RAM usage, disk speed, and actual internet speed instantly.',
+		title: `${$_('appName')} - ${$_('appTitle')}`,
+		description: `${$_('description_prefix')}bench.sh${$_('description_suffix')}`,
 		url: page.url.origin,
 		siteName: 'Calyx'
 	});
