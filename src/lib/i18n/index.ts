@@ -10,7 +10,7 @@ addMessages('id', id);
 addMessages('zh-CN', zhCN);
 addMessages('zh-TW', zhTW);
 
-const supportedLocales = ['en', 'id', 'zh-CN', 'zh-TW'];
+export const supportedLocales: readonly string[] = ['en', 'id', 'zh-CN', 'zh-TW'];
 
 function detectInitialLocale(): string {
 	if (!browser) return 'en';

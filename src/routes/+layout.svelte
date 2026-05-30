@@ -4,6 +4,7 @@
 	import { browser } from '$app/environment';
 	import { locale, _ } from 'svelte-i18n';
 	import '$lib/i18n';
+	import { GOOGLE_VERIFICATION_META_TOKEN } from '$lib/config';
 
 	interface Props {
 		children: import('svelte').Snippet;
@@ -28,7 +29,7 @@
 <svelte:head>
 	<title>{seo.title}</title>
 	<meta name="description" content={seo.description} />
-	<meta name="google-site-verification" content="rEJbluZzlbmiOtHhIfra6wljjZCaoquhYPtTqUwgXZ0" />
+	<meta name="google-site-verification" content={GOOGLE_VERIFICATION_META_TOKEN} />
 	<link rel="icon" href="/favicon.svg" />
 	<link rel="canonical" href={seo.url} />
 

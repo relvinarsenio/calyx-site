@@ -5,6 +5,7 @@
 	import GithubIcon from '$lib/components/GithubIcon.svelte';
 	import { page } from '$app/state';
 	import { locale, _ } from 'svelte-i18n';
+	import { supportedLocales } from '$lib/i18n';
 
 	let copied = $state(false);
 	let systemTime = $state('');
@@ -110,7 +111,7 @@
 								class="absolute right-0 mt-1 w-24 rounded border border-ink/15 bg-white/95 dark:bg-[#151518]/95 backdrop-blur-xl shadow-lg z-50 py-0.5 overflow-hidden"
 								role="listbox"
 							>
-								{#each ['en', 'id', 'zh-CN', 'zh-TW'] as lang (lang)}
+								{#each supportedLocales as lang (lang)}
 									<button
 										onclick={(e) => selectLang(lang, e)}
 										class="w-full text-left px-2 py-1 text-[9px] font-mono tracking-widest uppercase transition-all duration-150 flex items-center justify-between
