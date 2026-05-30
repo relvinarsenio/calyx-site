@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { Gauge, Cpu, HardDrive, Copy, Check } from '@lucide/svelte';
+	import { Sparkles, Unlock, Brain, Package, Copy, Check } from '@lucide/svelte';
 	import GithubIcon from '$lib/components/GithubIcon.svelte';
 	import { page } from '$app/state';
 	import { locale, _ } from 'svelte-i18n';
@@ -161,28 +161,32 @@
 					>{$_('description_suffix')}
 				</p>
 
-				<ul
-					class="grid grid-cols-1 gap-2 mt-4 md:mt-auto border border-line/40 p-4 rounded-2xl bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_10px_30px_-10px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_10px_30px_-10px_rgba(0,0,0,0.3)] will-change-transform translate-y-0 scale-100 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-[0_20px_30px_-10px_rgba(0,0,0,0.08)] hover:border-ink"
-				>
-					<li class="flex items-center gap-3 w-full border-b border-line/40 pb-2 mb-2">
-						<Cpu class="w-4 h-4 text-ink/70" />
-						<span class="font-mono text-xs uppercase tracking-widest text-ink/80"
-							>{$_('systemInfo')}</span
-						>
-					</li>
-					<li class="flex items-center gap-3 w-full border-b border-line/40 pb-2 mb-2">
-						<HardDrive class="w-4 h-4 text-ink/70" />
-						<span class="font-mono text-xs uppercase tracking-widest text-ink/80"
-							>{$_('diskBenchmark')}</span
-						>
-					</li>
-					<li class="flex items-center gap-3 w-full">
-						<Gauge class="w-4 h-4 text-ink/70" />
-						<span class="font-mono text-xs uppercase tracking-widest text-ink/80"
-							>{$_('networkSpeed')}</span
-						>
-					</li>
-				</ul>
+				<div class="flex flex-wrap gap-2 mt-4 md:mt-auto select-none cursor-default">
+					<span
+						class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5"
+					>
+						<Sparkles class="w-3.5 h-3.5 opacity-70" />
+						{$_('advBeginner')}
+					</span>
+					<span
+						class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5"
+					>
+						<Unlock class="w-3.5 h-3.5 opacity-70" />
+						{$_('advAccurate')}
+					</span>
+					<span
+						class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5"
+					>
+						<Brain class="w-3.5 h-3.5 opacity-70" />
+						{$_('advAdaptive')}
+					</span>
+					<span
+						class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5"
+					>
+						<Package class="w-3.5 h-3.5 opacity-70" />
+						{$_('advPortable')}
+					</span>
+				</div>
 			</section>
 
 			<!-- Right Column Command Execution -->

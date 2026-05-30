@@ -1,17 +1,18 @@
 {
+	"abstract": "Apaan nih?",
+	"advAccurate": "Bypass Cache",
+	"advAdaptive": "Optimasi Otomatis",
+	"advBeginner": "Ramah Pemula",
+	"advPortable": "Ultra Portabel",
 	"appName": "Calyx",
 	"appTitle": "Alat Benchmark Server",
-	"liveTime": "Waktu Lu Sekarang",
-	"abstract": "Apaan nih?",
+	"commandCopied": "Disalin! Tinggal di-paste",
+	"copyCommand": "Salin Perintah",
+	"copyright": "Copyright",
 	"description_prefix": "Alternatif modern buat ",
 	"description_suffix": ". Calyx langsung jalan di terminal lu buat ngecek spek server, RAM, speed disk, sama speed internet asli secara instan.",
-	"systemInfo": "Spek Sistem",
-	"diskBenchmark": "Benchmark Disk",
-	"networkSpeed": "Kecepatan Internet",
 	"execProtocol": "Cara Jalaninnya",
-	"terminalCommand": "Perintah Terminal",
-	"copyCommand": "Salin Perintah",
-	"commandCopied": "Disalin! Tinggal di-paste",
-	"copyright": "Copyright",
-	"openSource": "Open Source (MPL-2.0)"
+	"liveTime": "Waktu Lu Sekarang",
+	"openSource": "Open Source (MPL-2.0)",
+	"terminalCommand": "Perintah Terminal"
 }
