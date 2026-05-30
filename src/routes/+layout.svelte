@@ -31,6 +31,10 @@
 		name: seo.siteName,
 		url: seo.url
 	});
+
+	const jsonLdString = $derived(
+		`<script type="application/ld+json">${JSON.stringify(jsonLd)}</` + `script>`
+	);
 </script>
 
 <svelte:head>
@@ -40,7 +44,8 @@
 	<link rel="icon" href="/favicon.svg" />
 	<link rel="canonical" href={seo.url} />
 
-	{@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html jsonLdString}
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
