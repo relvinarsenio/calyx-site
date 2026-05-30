@@ -28,7 +28,7 @@
 <svelte:head>
 	<title>{seo.title}</title>
 	<meta name="description" content={seo.description} />
-	<meta name="google-site-verification" content="byTbTMZY1oGzcAopzU_sya1rc11mgEHtaKLHOp89uSY" />
+	<meta name="google-site-verification" content="rEJbluZzlbmiOtHhIfra6wljjZCaoquhYPtTqUwgXZ0" />
 	<link rel="icon" href="/favicon.svg" />
 	<link rel="canonical" href={seo.url} />
 
