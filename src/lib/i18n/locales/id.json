@@ -10,7 +10,7 @@
 	"copyCommand": "Salin Perintah",
 	"copyright": "Copyright",
 	"description_prefix": "Alternatif modern buat ",
-	"description_suffix": ". Calyx langsung jalan di terminal lu buat ngecek spek server, RAM, speed disk, sama speed internet asli secara instan.",
+	"description_suffix": ". Calyx langsung jalan di terminal lu buat ngecek spek server, penggunaan RAM, kecepatan disk, sama kecepatan internet asli secara instan.",
 	"execProtocol": "Cara Jalaninnya",
 	"liveTime": "Waktu Lu Sekarang",
 	"openSource": "Open Source (MPL-2.0)",
