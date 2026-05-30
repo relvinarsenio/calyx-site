@@ -40,9 +40,7 @@
 	<link rel="icon" href="/favicon.svg" />
 	<link rel="canonical" href={seo.url} />
 
-	<script type="application/ld+json">
-		{JSON.stringify(jsonLd)}
-	</script>
+	{@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
