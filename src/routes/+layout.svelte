@@ -24,6 +24,13 @@
 		url: page.url.origin,
 		siteName: 'Calyx'
 	});
+
+	const jsonLd = $derived({
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: seo.siteName,
+		url: seo.url
+	});
 </script>
 
 <svelte:head>
@@ -32,6 +39,10 @@
 	<meta name="google-site-verification" content={GOOGLE_VERIFICATION_META_TOKEN} />
 	<link rel="icon" href="/favicon.svg" />
 	<link rel="canonical" href={seo.url} />
+
+	<script type="application/ld+json">
+		{JSON.stringify(jsonLd)}
+	</script>
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
