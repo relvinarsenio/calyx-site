@@ -6,8 +6,8 @@ export const GET: RequestHandler = () => {
 
 	return new Response(script.trim(), {
 		headers: {
-			'content-type': 'text/plain; charset=utf-8',
-			'cache-control': 'public, max-age=3600, s-maxage=86400'
+			'content-type': 'application/x-sh; charset=utf-8',
+			'cache-control': 'no-cache, no-store, must-revalidate'
 		}
 	});
 };
