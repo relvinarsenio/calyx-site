@@ -16,7 +16,8 @@ export const GET: RequestHandler = ({ url }) => {
 
 	return new Response(xml.trim(), {
 		headers: {
-			'content-type': 'application/xml; charset=utf-8'
+			'content-type': 'application/xml; charset=utf-8',
+			'cache-control': 'public, max-age=3600, s-maxage=86400'
 		}
 	});
 };
