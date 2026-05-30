@@ -1,3 +1,6 @@
 /run
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600, s-maxage=86400
