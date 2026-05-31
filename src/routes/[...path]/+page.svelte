@@ -123,18 +123,7 @@
 									>
 										<span>{lang}</span>
 										{#if lang === $locale}
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												viewBox="0 0 20 20"
-												fill="currentColor"
-												class="w-2.5 h-2.5"
-											>
-												<path
-													fill-rule="evenodd"
-													d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-													clip-rule="evenodd"
-												/>
-											</svg>
+											<Check class="w-2.5 h-2.5" />
 										{/if}
 									</button>
 								{/each}
@@ -161,41 +150,31 @@
 					>{$_('description_suffix')}
 				</p>
 
-				<div class="flex flex-wrap gap-2 mt-4 md:mt-auto select-none cursor-default">
-					<span
-						class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5"
-					>
+				<ul class="flex flex-wrap gap-2 mt-4 md:mt-auto select-none cursor-default" aria-label="Features">
+					<li class="feature-badge">
 						<Sparkles class="w-3.5 h-3.5 opacity-70" />
 						{$_('advBeginner')}
-					</span>
-					<span
-						class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5"
-					>
+					</li>
+					<li class="feature-badge">
 						<Unlock class="w-3.5 h-3.5 opacity-70" />
 						{$_('advAccurate')}
-					</span>
-					<span
-						class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5"
-					>
+					</li>
+					<li class="feature-badge">
 						<Brain class="w-3.5 h-3.5 opacity-70" />
 						{$_('advAdaptive')}
-					</span>
-					<span
-						class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5"
-					>
+					</li>
+					<li class="feature-badge">
 						<Package class="w-3.5 h-3.5 opacity-70" />
 						{$_('advPortable')}
-					</span>
-				</div>
+					</li>
+				</ul>
 			</section>
 
 			<!-- Right Column Command Execution -->
 			<section class="md:col-span-8 flex flex-col pt-2 md:pl-4">
 				<h2 class="col-header mb-4">{$_('execProtocol')}</h2>
 
-				<div
-					class="border border-line/40 rounded-2xl mt-2 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_10px_30px_-10px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_10px_30px_-10px_rgba(0,0,0,0.3)] will-change-transform translate-y-0 scale-100 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-[0_20px_30px_-10px_rgba(0,0,0,0.08)] hover:border-ink animate-float-card group overflow-hidden relative"
-				>
+				<div class="glass-panel mt-2 animate-float-card group relative">
 					<div
 						class="relative flex items-center justify-center border-b border-line/40 px-4 py-2 bg-ink/[0.03]"
 					>
