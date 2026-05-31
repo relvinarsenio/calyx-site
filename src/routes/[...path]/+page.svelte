@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { Sparkles, Unlock, Brain, Package, Copy, Check } from '@lucide/svelte';
+	import { Sparkles, LockOpen, Brain, Package, Copy, Check } from '@lucide/svelte';
 	import GithubIcon from '$lib/components/GithubIcon.svelte';
 	import { page } from '$app/state';
 	import { locale, _ } from 'svelte-i18n';
 	import { supportedLocales } from '$lib/i18n';
+	import { DropdownMenu, Tooltip } from 'bits-ui';
 
 	let copied = $state(false);
 	let systemTime = $state('');
-	let showLangDropdown = $state(false);
-
+	
 	let command = $derived(`bash <(curl -fsL ${page.url.origin}/run)`);
 
 	onMount(() => {
@@ -20,14 +20,8 @@
 		updateTime();
 		const interval = setInterval(updateTime, 1000);
 
-		const closeDropdown = () => {
-			showLangDropdown = false;
-		};
-		window.addEventListener('click', closeDropdown);
-
 		return () => {
 			clearInterval(interval);
-			window.removeEventListener('click', closeDropdown);
 		};
 	});
 
@@ -39,16 +33,9 @@
 		}, 2000);
 	}
 
-	function toggleDropdown(e: MouseEvent) {
-		e.stopPropagation();
-		showLangDropdown = !showLangDropdown;
-	}
-
-	function selectLang(langCode: string, e: MouseEvent) {
-		e.stopPropagation();
+	function selectLang(langCode: string) {
 		locale.set(langCode);
 		localStorage.setItem('lang', langCode);
-		showLangDropdown = false;
 	}
 </script>
 
@@ -68,67 +55,73 @@
 			</hgroup>
 			<div class="mt-4 md:mt-0 flex flex-col md:items-end w-full md:w-auto">
 				<div class="flex items-center gap-4 mb-6 md:mb-5">
-					<a
-						id="github-repo-link"
-						href="https://github.com/relvinarsenio/calyx/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-ink/40 hover:text-ink transition-colors group flex items-center gap-2"
-						title="GitHub Repository"
-					>
-						<GithubIcon className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
-					</a>
+					<Tooltip.Provider delayDuration={150}>
+						<Tooltip.Root>
+							<Tooltip.Trigger>
+								{#snippet child({ props })}
+									<a
+										{...props}
+										id="github-repo-link"
+										href="https://github.com/relvinarsenio/calyx/"
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="GitHub Repository"
+										class="text-ink/40 hover:text-ink transition-colors group flex items-center gap-2"
+									>
+										<GithubIcon className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+									</a>
+								{/snippet}
+							</Tooltip.Trigger>
+							<Tooltip.Content 
+								sideOffset={6}
+								class="z-50 px-2 py-1 text-[9px] font-mono tracking-widest uppercase rounded border border-ink/15 bg-white/95 dark:bg-[#151518]/95 backdrop-blur-xl shadow-lg text-ink"
+							>
+								GitHub Repository
+							</Tooltip.Content>
+						</Tooltip.Root>
+					</Tooltip.Provider>
 					<div class="w-[1px] h-4 bg-ink/15"></div>
 					<div class="relative">
-						<button
-							id="lang-selector-btn"
-							onclick={toggleDropdown}
-							class="flex items-center gap-1 px-2 py-0.5 text-[9px] font-mono tracking-widest uppercase rounded border border-ink/15 hover:border-ink/40 text-ink/50 hover:text-ink bg-transparent transition-all duration-200 cursor-pointer select-none active:scale-[0.97]"
-							aria-haspopup="listbox"
-							aria-expanded={showLangDropdown}
-						>
-							<span>{$locale || 'en'}</span>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 20 20"
-								fill="currentColor"
-								class="w-3 h-3 transition-transform duration-200 {showLangDropdown
-									? 'rotate-180'
-									: 'rotate-0'}"
+						<DropdownMenu.Root>
+							<DropdownMenu.Trigger
+								id="lang-selector-btn"
+								class="flex items-center gap-1 px-2 py-0.5 text-[9px] font-mono tracking-widest uppercase rounded border border-ink/15 hover:border-ink/40 text-ink/50 hover:text-ink bg-transparent transition-all duration-200 cursor-pointer select-none active:scale-[0.97]"
 							>
-								<path
-									fill-rule="evenodd"
-									d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-									clip-rule="evenodd"
-								/>
-							</svg>
-						</button>
-
-						{#if showLangDropdown}
-							<div
-								in:fade={{ duration: 100 }}
-								out:fade={{ duration: 75 }}
-								class="absolute right-0 mt-1 w-24 rounded border border-ink/15 bg-white/95 dark:bg-[#151518]/95 backdrop-blur-xl shadow-lg z-50 py-0.5 overflow-hidden"
-								role="listbox"
+								<span>{$locale || 'en'}</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+									class="w-3 h-3 transition-transform duration-200 data-[state=open]:rotate-180"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							</DropdownMenu.Trigger>
+							<DropdownMenu.Content
+								class="mt-1 w-24 rounded border border-ink/15 bg-white/95 dark:bg-[#151518]/95 backdrop-blur-xl shadow-lg z-50 py-0.5 overflow-hidden"
+								align="end"
+								sideOffset={4}
 							>
 								{#each supportedLocales as lang (lang)}
-									<button
-										onclick={(e) => selectLang(lang, e)}
-										class="w-full text-left px-2 py-1 text-[9px] font-mono tracking-widest uppercase transition-all duration-150 flex items-center justify-between
+									<DropdownMenu.Item
+										onclick={() => selectLang(lang)}
+										class="w-full text-left px-2 py-1 text-[9px] font-mono tracking-widest uppercase transition-all duration-150 flex items-center justify-between outline-none cursor-pointer
 											{lang === $locale
 											? 'bg-ink text-bg font-bold'
-											: 'text-ink/70 hover:bg-ink/5 dark:hover:bg-white/5 hover:text-ink'}"
-										role="option"
-										aria-selected={lang === $locale}
+											: 'text-ink/70 data-[highlighted]:bg-ink/5 dark:data-[highlighted]:bg-white/5 data-[highlighted]:text-ink'}"
 									>
 										<span>{lang}</span>
 										{#if lang === $locale}
 											<Check class="w-2.5 h-2.5" />
 										{/if}
-									</button>
+									</DropdownMenu.Item>
 								{/each}
-							</div>
-						{/if}
+							</DropdownMenu.Content>
+						</DropdownMenu.Root>
 					</div>
 				</div>
 				<p class="col-header mb-2">{$_('liveTime')}</p>
@@ -156,7 +149,7 @@
 						{$_('advBeginner')}
 					</li>
 					<li class="feature-badge">
-						<Unlock class="w-3.5 h-3.5 opacity-70" />
+						<LockOpen class="w-3.5 h-3.5 opacity-70" />
 						{$_('advAccurate')}
 					</li>
 					<li class="feature-badge">
