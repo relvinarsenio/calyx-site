@@ -12,7 +12,7 @@ addMessages('zh-TW', zhTW);
 
 export const supportedLocales: readonly string[] = ['en', 'id', 'zh-CN', 'zh-TW'];
 
-function detectInitialLocale(): string {
+export function detectInitialLocale(): string {
 	if (!browser) return 'en';
 
 	const saved = localStorage.getItem('lang');
@@ -36,5 +36,5 @@ function detectInitialLocale(): string {
 
 init({
 	fallbackLocale: 'en',
-	initialLocale: detectInitialLocale()
+	initialLocale: 'en'
 });

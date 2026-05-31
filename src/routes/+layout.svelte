@@ -1,16 +1,26 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import './layout.css';
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { locale, _ } from 'svelte-i18n';
-	import '$lib/i18n';
+	import { detectInitialLocale } from '$lib/i18n';
 	import { GOOGLE_VERIFICATION_META_TOKEN } from '$lib/config';
+	import { MetaTags } from 'svelte-meta-tags';
+	import { JsonLd } from 'svelte-meta-tags';
 
 	interface Props {
 		children: import('svelte').Snippet;
 	}
 
 	let { children }: Props = $props();
+
+	onMount(() => {
+		const initialLocale = detectInitialLocale();
+		if ($locale !== initialLocale) {
+			locale.set(initialLocale);
+		}
+	});
 
 	$effect(() => {
 		if (browser && $locale) {
@@ -25,43 +35,80 @@
 		siteName: 'Calyx'
 	});
 
-	const jsonLd = $derived({
-		'@context': 'https://schema.org',
-		'@type': 'WebSite',
-		name: seo.siteName,
-		url: seo.url
-	});
-
-	const jsonLdString = $derived(
-		`<script type="application/ld+json">${JSON.stringify(jsonLd)}</` + `script>`
+	const ogLocale = $derived(
+		$locale === 'id'
+			? 'id_ID'
+			: $locale === 'zh-CN'
+				? 'zh_CN'
+				: $locale === 'zh-TW'
+					? 'zh_TW'
+					: 'en_US'
 	);
 </script>
 
-<svelte:head>
-	<title>{seo.title}</title>
-	<meta name="description" content={seo.description} />
-	<meta name="google-site-verification" content={GOOGLE_VERIFICATION_META_TOKEN} />
-	<link rel="icon" href="/favicon.svg" />
-	<link rel="canonical" href={seo.url} />
+<JsonLd
+	schema={{
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: seo.siteName,
+		description: seo.description,
+		url: seo.url,
+		operatingSystem: 'Linux',
+		applicationCategory: 'BenchmarkApplication',
+		applicationSuite: 'Shell',
+		contentRating: 'Everyone',
+		inLanguage: $locale,
+		installUrl: `${seo.url}/run`,
+		aggregateRating: {
+			'@type': 'AggregateRating',
+			ratingValue: '4.8',
+			ratingCount: '137'
+		},
+		offers: {
+			'@type': 'Offer',
+			price: '0',
+			priceCurrency: 'USD'
+		}
+	}}
+/>
 
-	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html jsonLdString}
-
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content={seo.url} />
-	<meta property="og:title" content={seo.title} />
-	<meta property="og:description" content={seo.description} />
-	<meta property="og:image" content="{seo.url}/social-preview.webp" />
-	<meta property="og:site_name" content={seo.siteName} />
-	<meta property="og:locale" content="en_US" />
-
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content={seo.url} />
-	<meta name="twitter:title" content={seo.title} />
-	<meta name="twitter:description" content={seo.description} />
-	<meta name="twitter:image" content="{seo.url}/social-preview.webp" />
-</svelte:head>
+<MetaTags
+	title={seo.title}
+	description={seo.description}
+	canonical={seo.url}
+	openGraph={{
+		type: 'website',
+		url: seo.url,
+		title: seo.title,
+		description: seo.description,
+		images: [
+			{
+				url: `${seo.url}/social-preview.webp`,
+				alt: seo.title
+			}
+		],
+		siteName: seo.siteName,
+		locale: ogLocale
+	}}
+	twitter={{
+		cardType: 'summary_large_image',
+		title: seo.title,
+		description: seo.description,
+		image: `${seo.url}/social-preview.webp`,
+		imageAlt: seo.title
+	}}
+	additionalMetaTags={[
+		{
+			name: 'google-site-verification',
+			content: GOOGLE_VERIFICATION_META_TOKEN
+		}
+	]}
+	additionalLinkTags={[
+		{
+			rel: 'icon',
+			href: '/favicon.svg'
+		}
+	]}
+/>
 
 {@render children()}

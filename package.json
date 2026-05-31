@@ -46,6 +46,7 @@
 		"@fontsource/space-grotesk": "^5.2.10",
 		"@fontsource/space-mono": "^5.2.9",
 		"@lucide/svelte": "^1.17.0",
-		"svelte-i18n": "^4.0.1"
+		"svelte-i18n": "^4.0.1",
+		"svelte-meta-tags": "^4.7.0"
 	}
 }

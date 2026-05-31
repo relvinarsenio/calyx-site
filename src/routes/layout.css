@@ -133,7 +133,7 @@
 }
 
 @utility typewriter-calyx {
-	@apply inline-block overflow-hidden whitespace-nowrap border-r-2 border-ink w-0;
+	@apply inline-block w-0 overflow-hidden border-r-2 border-ink whitespace-nowrap;
 	animation:
 		typing-calyx 0.6s steps(5, end) 0.2s forwards,
 		blink-cursor 0.6s step-end infinite,
@@ -141,7 +141,7 @@
 }
 
 @utility typewriter-command {
-	@apply inline-block align-bottom overflow-hidden whitespace-nowrap border-r-2 border-ink w-0;
+	@apply inline-block w-0 overflow-hidden border-r-2 border-ink align-bottom whitespace-nowrap;
 	animation:
 		typing-command 1.5s steps(var(--length), end) 1s forwards,
 		blink-cursor 0.6s step-end infinite,
@@ -149,11 +149,11 @@
 }
 
 @utility feature-badge {
-	@apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line/40 bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)] font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink/80 transition-all duration-300 hover:border-ink hover:text-ink hover:-translate-y-0.5;
+	@apply inline-flex items-center gap-2 rounded-full border border-line/40 bg-white/45 px-3 py-1.5 font-mono text-[10px] tracking-widest text-ink/80 uppercase shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_2px_10px_-4px_rgba(0,0,0,0.04)] backdrop-blur-[24px] backdrop-saturate-[180%] transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:text-ink sm:text-[11px] dark:bg-[#1e1e23]/45 dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_2px_10px_-4px_rgba(0,0,0,0.3)];
 }
 
 @utility glass-panel {
-	@apply border border-line/40 rounded-2xl bg-white/45 dark:bg-[#1e1e23]/45 backdrop-blur-[24px] backdrop-saturate-[180%] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_10px_30px_-10px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_10px_30px_-10px_rgba(0,0,0,0.3)] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-[0_20px_30px_-10px_rgba(0,0,0,0.08)] hover:border-ink overflow-hidden;
+	@apply overflow-hidden rounded-2xl border border-line/40 bg-white/45 shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.6),0_10px_30px_-10px_rgba(0,0,0,0.04)] backdrop-blur-[24px] backdrop-saturate-[180%] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:scale-[1.01] hover:border-ink hover:shadow-[0_20px_30px_-10px_rgba(0,0,0,0.08)] dark:bg-[#1e1e23]/45 dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1),0_10px_30px_-10px_rgba(0,0,0,0.3)];
 }
 
 @media (prefers-reduced-motion: reduce) {

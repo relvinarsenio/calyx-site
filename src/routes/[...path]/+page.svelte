@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { Sparkles, LockOpen, Brain, Package, Copy, Check } from '@lucide/svelte';
+	import { Sparkles, LockOpen, Brain, Package, Copy, Check, ChevronDown } from '@lucide/svelte';
 	import GithubIcon from '$lib/components/GithubIcon.svelte';
 	import { page } from '$app/state';
 	import { locale, _ } from 'svelte-i18n';
@@ -10,7 +10,7 @@
 
 	let copied = $state(false);
 	let systemTime = $state('');
-	
+
 	let command = $derived(`bash <(curl -fsL ${page.url.origin}/run)`);
 
 	onMount(() => {
@@ -68,11 +68,13 @@
 										aria-label="GitHub Repository"
 										class="text-ink/40 hover:text-ink transition-colors group flex items-center gap-2"
 									>
-										<GithubIcon className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+										<GithubIcon
+											className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform"
+										/>
 									</a>
 								{/snippet}
 							</Tooltip.Trigger>
-							<Tooltip.Content 
+							<Tooltip.Content
 								sideOffset={6}
 								class="z-50 px-2 py-1 text-[9px] font-mono tracking-widest uppercase rounded border border-ink/15 bg-white/95 dark:bg-[#151518]/95 backdrop-blur-xl shadow-lg text-ink"
 							>
@@ -88,18 +90,9 @@
 								class="flex items-center gap-1 px-2 py-0.5 text-[9px] font-mono tracking-widest uppercase rounded border border-ink/15 hover:border-ink/40 text-ink/50 hover:text-ink bg-transparent transition-all duration-200 cursor-pointer select-none active:scale-[0.97]"
 							>
 								<span>{$locale || 'en'}</span>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 20 20"
-									fill="currentColor"
+								<ChevronDown
 									class="w-3 h-3 transition-transform duration-200 data-[state=open]:rotate-180"
-								>
-									<path
-										fill-rule="evenodd"
-										d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-										clip-rule="evenodd"
-									/>
-								</svg>
+								/>
 							</DropdownMenu.Trigger>
 							<DropdownMenu.Content
 								class="mt-1 w-24 rounded border border-ink/15 bg-white/95 dark:bg-[#151518]/95 backdrop-blur-xl shadow-lg z-50 py-0.5 overflow-hidden"
@@ -143,7 +136,10 @@
 					>{$_('description_suffix')}
 				</p>
 
-				<ul class="flex flex-wrap gap-2 mt-4 md:mt-auto select-none cursor-default" aria-label="Features">
+				<ul
+					class="flex flex-wrap gap-2 mt-4 md:mt-auto select-none cursor-default"
+					aria-label="Features"
+				>
 					<li class="feature-badge">
 						<Sparkles class="w-3.5 h-3.5 opacity-70" />
 						{$_('advBeginner')}
