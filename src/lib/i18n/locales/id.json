@@ -6,13 +6,20 @@
 	"advPortable": "Ultra Portabel",
 	"appName": "Calyx",
 	"appTitle": "Alat Benchmark Server",
+	"close": "Tutup",
 	"commandCopied": "Disalin! Tinggal di-paste",
 	"copyCommand": "Salin Perintah",
 	"copyright": "Copyright",
+	"descAccurate": "Akses hardware langsung buat lewatin cache OS biar dapat metrik I/O asli.",
+	"descAdaptive": "Pintar nyesuaiin tes berdasarkan kemampuan sistem lu.",
+	"descBeginner": "Tanpa instalasi atau argumen rumit. Cukup jalankan satu perintah dan lihat hasilnya.",
+	"descPortable": "Satu binary doang tanpa butuh dependensi eksternal apa-apa.",
 	"description_prefix": "Alternatif modern buat ",
 	"description_suffix": ". Calyx langsung jalan di terminal lu buat ngecek spek server, penggunaan RAM, kecepatan disk, sama kecepatan internet asli secara instan.",
 	"execProtocol": "Cara Jalaninnya",
 	"liveTime": "Waktu Lu Sekarang",
 	"openSource": "Open Source (MPL-2.0)",
-	"terminalCommand": "Perintah Terminal"
+	"sourceCode": "Source Code Bash Script",
+	"terminalCommand": "Perintah Terminal",
+	"viewSource": "Lihat Source Script"
 }

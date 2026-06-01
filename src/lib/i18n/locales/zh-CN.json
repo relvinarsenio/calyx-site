@@ -6,13 +6,20 @@
 	"advPortable": "超强便携",
 	"appName": "Calyx",
 	"appTitle": "服务器跑分工具",
+	"close": "关闭",
 	"commandCopied": "已复制！快去粘贴",
 	"copyCommand": "一键复制",
 	"copyright": "Copyright",
+	"descAccurate": "直接访问硬件，绕过系统缓存，获取真实的 I/O 数据。",
+	"descAdaptive": "根据你的系统性能，智能调整测试方案。",
+	"descBeginner": "免安装，无复杂参数。只需运行一条命令即可查看结果。",
+	"descPortable": "单个可执行文件，完全不需要安装额外的依赖。",
 	"description_prefix": "一个用来替代 ",
 	"description_suffix": " 的现代化小工具。直接在终端里跑，一键秒查服务器配置、内存占用、硬盘读写速度和真实网络速度。",
 	"execProtocol": "怎么运行",
 	"liveTime": "你这儿的当前时间",
 	"openSource": "开源 (MPL-2.0)",
-	"terminalCommand": "终端命令"
+	"sourceCode": "Bash 脚本源码",
+	"terminalCommand": "终端命令",
+	"viewSource": "查看脚本源码"
 }

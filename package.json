@@ -47,6 +47,7 @@
 		"@fontsource/space-mono": "^5.2.9",
 		"@lucide/svelte": "^1.17.0",
 		"svelte-i18n": "^4.0.1",
-		"svelte-meta-tags": "^4.7.0"
+		"svelte-meta-tags": "^4.7.0",
+		"tailwindcss-animate": "^1.0.7"
 	}
 }

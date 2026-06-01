@@ -6,13 +6,20 @@
 	"advPortable": "Ultra Portable",
 	"appName": "Calyx",
 	"appTitle": "Server Benchmark Utility",
+	"close": "Close",
 	"commandCopied": "Copied! Go paste it",
 	"copyCommand": "Copy Command",
 	"copyright": "Copyright",
+	"descAccurate": "Directly accesses hardware to bypass OS caches for true I/O metrics.",
+	"descAdaptive": "Intelligently adjusts tests based on your system's capabilities.",
+	"descBeginner": "No installation or complex arguments. Just run one command and see the results.",
+	"descPortable": "A single binary with no external dependencies required.",
 	"description_prefix": "A modern alternative to ",
 	"description_suffix": ". Calyx runs right in your terminal to instantly check server specs, RAM usage, disk speed, and real internet speed.",
 	"execProtocol": "How to Run",
 	"liveTime": "Your Current Time",
 	"openSource": "Open Source (MPL-2.0)",
-	"terminalCommand": "Terminal Command"
+	"sourceCode": "Bash Script Source Code",
+	"terminalCommand": "Terminal Command",
+	"viewSource": "View Script Source"
 }
