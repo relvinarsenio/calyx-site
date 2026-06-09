@@ -1,6 +1,5 @@
 import type { Handle } from '@sveltejs/kit';
-
-const SUPPORTED_LOCALES = ['en', 'id', 'zh-CN', 'zh-TW'];
+import { isSupportedLocale, parseChineseVariant } from '$lib/i18n/locales';
 
 /** Resolve locale from Accept-Language header for SSR-correct initial rendering. */
 function resolveLocaleFromHeader(acceptLanguage: string | null): string {
@@ -15,13 +14,13 @@ function resolveLocaleFromHeader(acceptLanguage: string | null): string {
 		.sort((a, b) => b.quality - a.quality);
 
 	for (const { lang } of languages) {
-		if (SUPPORTED_LOCALES.includes(lang)) return lang;
+		if (isSupportedLocale(lang)) return lang;
 
 		const prefix = lang.split('-')[0];
 		if (prefix === 'zh') {
-			return /tw|hk|mo|hant/i.test(lang) ? 'zh-TW' : 'zh-CN';
+			return parseChineseVariant(lang);
 		}
-		if (SUPPORTED_LOCALES.includes(prefix)) return prefix;
+		if (isSupportedLocale(prefix)) return prefix;
 	}
 
 	return 'en';
@@ -31,8 +30,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const cookieLang = event.cookies.get('lang');
 	const headerLang = resolveLocaleFromHeader(event.request.headers.get('accept-language'));
 
-	event.locals.locale =
-		cookieLang && SUPPORTED_LOCALES.includes(cookieLang) ? cookieLang : headerLang;
+	event.locals.locale = cookieLang && isSupportedLocale(cookieLang) ? cookieLang : headerLang;
 
 	return resolve(event, {
 		transformPageChunk: ({ html }) => html.replace('lang="en"', `lang="${event.locals.locale}"`)

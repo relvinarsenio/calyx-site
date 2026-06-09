@@ -70,7 +70,7 @@
 	function selectLang(langCode: string) {
 		locale.set(langCode);
 		localStorage.setItem('lang', langCode);
-		document.cookie = `lang=${langCode};path=/;max-age=31536000;SameSite=Lax`;
+		document.cookie = `lang=${langCode};path=/;max-age=31536000;SameSite=Lax;Secure`;
 	}
 </script>
 

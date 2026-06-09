@@ -4,34 +4,32 @@ import en from './locales/en.json';
 import id from './locales/id.json';
 import zhCN from './locales/zh-CN.json';
 import zhTW from './locales/zh-TW.json';
+import { supportedLocales, isSupportedLocale, parseChineseVariant } from './locales';
+import type { SupportedLocale } from './locales';
 
 addMessages('en', en);
 addMessages('id', id);
 addMessages('zh-CN', zhCN);
 addMessages('zh-TW', zhTW);
 
-export const supportedLocales = ['en', 'id', 'zh-CN', 'zh-TW'] as const;
-export type SupportedLocale = (typeof supportedLocales)[number];
+export { supportedLocales };
+export type { SupportedLocale };
 
 export function detectClientLocale(): SupportedLocale {
 	if (!browser) return 'en';
 
 	const saved = localStorage.getItem('lang');
-	if (saved && (supportedLocales as readonly string[]).includes(saved))
-		return saved as SupportedLocale;
+	if (saved && isSupportedLocale(saved)) return saved;
 
 	const navLang = window.navigator.language;
-	if ((supportedLocales as readonly string[]).includes(navLang)) return navLang as SupportedLocale;
+	if (isSupportedLocale(navLang)) return navLang;
 
 	const prefix = navLang.split('-')[0];
 	if (prefix === 'zh') {
-		if (/tw|hk|mo|hant/i.test(navLang)) {
-			return 'zh-TW';
-		}
-		return 'zh-CN';
+		return parseChineseVariant(navLang);
 	}
 
-	if ((supportedLocales as readonly string[]).includes(prefix)) return prefix as SupportedLocale;
+	if (isSupportedLocale(prefix)) return prefix;
 
 	return 'en';
 }
