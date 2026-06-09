@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import {
 		Sparkles,
@@ -32,19 +31,22 @@
 		{ icon: Package, adv: 'advPortable', desc: 'descPortable' }
 	];
 
-	onMount(() => {
+	$effect(() => {
 		const updateTime = () => {
-			systemTime = new Date().toLocaleString();
+			systemTime = new Date().toLocaleString($locale ?? 'en');
 		};
 		updateTime();
 		const interval = setInterval(updateTime, 1000);
 
-		return () => {
-			clearInterval(interval);
-		};
+		return () => clearInterval(interval);
 	});
 
 	let copyTimeout: ReturnType<typeof setTimeout>;
+
+	$effect(() => {
+		return () => clearTimeout(copyTimeout);
+	});
+
 	function handleCopy() {
 		navigator.clipboard.writeText(command);
 		copied = true;
@@ -68,6 +70,7 @@
 	function selectLang(langCode: string) {
 		locale.set(langCode);
 		localStorage.setItem('lang', langCode);
+		document.cookie = `lang=${langCode};path=/;max-age=31536000;SameSite=Lax`;
 	}
 </script>
 
@@ -100,9 +103,7 @@
 										aria-label="GitHub Repository"
 										class="text-ink/40 hover:text-ink transition-colors group flex items-center gap-2"
 									>
-										<GithubIcon
-											className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform"
-										/>
+										<GithubIcon class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
 									</a>
 								{/snippet}
 							</Tooltip.Trigger>

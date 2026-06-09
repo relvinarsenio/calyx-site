@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import './layout.css';
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
 	import { locale, _ } from 'svelte-i18n';
-	import { detectInitialLocale } from '$lib/i18n';
+	import { initI18n } from '$lib/i18n';
 	import { GOOGLE_VERIFICATION_META_TOKEN } from '$lib/config';
 	import { MetaTags } from 'svelte-meta-tags';
 	import { JsonLd } from 'svelte-meta-tags';
@@ -15,12 +14,7 @@
 
 	let { children }: Props = $props();
 
-	onMount(() => {
-		const initialLocale = detectInitialLocale();
-		if ($locale !== initialLocale) {
-			locale.set(initialLocale);
-		}
-	});
+	initI18n(page.data.locale);
 
 	$effect(() => {
 		if (browser && $locale) {
@@ -58,17 +52,7 @@
 		applicationSuite: 'Shell',
 		contentRating: 'Everyone',
 		inLanguage: $locale,
-		installUrl: `${seo.url}/run`,
-		aggregateRating: {
-			'@type': 'AggregateRating',
-			ratingValue: '4.8',
-			ratingCount: '137'
-		},
-		offers: {
-			'@type': 'Offer',
-			price: '0',
-			priceCurrency: 'USD'
-		}
+		installUrl: `${seo.url}/run`
 	}}
 />
 

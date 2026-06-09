@@ -1,9 +1,9 @@
 <script lang="ts">
 	interface Props {
-		className?: string;
+		class?: string;
 	}
 
-	let { className = '' }: Props = $props();
+	let { class: className = '' }: Props = $props();
 </script>
 
 <svg

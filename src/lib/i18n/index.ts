@@ -10,16 +10,18 @@ addMessages('id', id);
 addMessages('zh-CN', zhCN);
 addMessages('zh-TW', zhTW);
 
-export const supportedLocales: readonly string[] = ['en', 'id', 'zh-CN', 'zh-TW'];
+export const supportedLocales = ['en', 'id', 'zh-CN', 'zh-TW'] as const;
+export type SupportedLocale = (typeof supportedLocales)[number];
 
-export function detectInitialLocale(): string {
+export function detectClientLocale(): SupportedLocale {
 	if (!browser) return 'en';
 
 	const saved = localStorage.getItem('lang');
-	if (saved && supportedLocales.includes(saved)) return saved;
+	if (saved && (supportedLocales as readonly string[]).includes(saved))
+		return saved as SupportedLocale;
 
 	const navLang = window.navigator.language;
-	if (supportedLocales.includes(navLang)) return navLang;
+	if ((supportedLocales as readonly string[]).includes(navLang)) return navLang as SupportedLocale;
 
 	const prefix = navLang.split('-')[0];
 	if (prefix === 'zh') {
@@ -29,12 +31,16 @@ export function detectInitialLocale(): string {
 		return 'zh-CN';
 	}
 
-	if (supportedLocales.includes(prefix)) return prefix;
+	if ((supportedLocales as readonly string[]).includes(prefix)) return prefix as SupportedLocale;
 
 	return 'en';
 }
 
-init({
-	fallbackLocale: 'en',
-	initialLocale: 'en'
-});
+export function initI18n(serverLocale?: string) {
+	const locale = browser ? detectClientLocale() : (serverLocale ?? 'en');
+
+	init({
+		fallbackLocale: 'en',
+		initialLocale: locale
+	});
+}
