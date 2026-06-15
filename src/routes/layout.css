@@ -15,26 +15,6 @@
 		'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
 		'Courier New', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans Mono CJK SC',
 		'WenQuanYi Micro Hei Mono', monospace;
-	@keyframes fade-in-down {
-		0% {
-			opacity: 0;
-			transform: translateY(-10px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	@keyframes fade-in-up {
-		0% {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
 	@keyframes draw-line-horizontal {
 		0% {
 			transform: scaleX(0);

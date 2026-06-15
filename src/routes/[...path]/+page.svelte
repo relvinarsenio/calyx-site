@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { springFly } from '$lib/transitions';
 	import Header from '$lib/components/Header.svelte';
 	import Abstract from '$lib/components/Abstract.svelte';
 	import Terminal from '$lib/components/Terminal.svelte';
@@ -10,7 +11,8 @@
 		<Header />
 
 		<div
-			class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4 animate-[fade-in-up_0.5s_ease-out_both] delay-600"
+			in:springFly={{ y: 25, duration: 600, delay: 200, scale: 0.98 }}
+			class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4"
 		>
 			<Abstract />
 			<Terminal />

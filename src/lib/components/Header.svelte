@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { springFly } from '$lib/transitions';
 	import { locale, _ } from 'svelte-i18n';
 	import { supportedLocales } from '$lib/i18n';
 	import { DropdownMenu, Tooltip, Separator } from 'bits-ui';
@@ -25,7 +26,8 @@
 </script>
 
 <header
-	class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 grid-line-bottom pb-4 px-2 delay-100 animate-[fade-in-down_0.5s_ease-out_both]"
+	in:springFly={{ y: -15, duration: 550, delay: 100, scale: 0.98 }}
+	class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 grid-line-bottom pb-4 px-2"
 >
 	<hgroup>
 		<p class="col-header mb-2 leading-none">{$_('appTitle')}</p>

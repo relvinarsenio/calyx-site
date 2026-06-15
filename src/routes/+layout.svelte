@@ -16,7 +16,10 @@
 
 	initI18n(page.data.locale);
 
+	let mounted = $state(false);
+
 	$effect(() => {
+		mounted = true;
 		if (browser && $locale) {
 			document.documentElement.lang = $locale;
 		}
@@ -95,4 +98,6 @@
 	]}
 />
 
-{@render children()}
+{#if mounted}
+	{@render children()}
+{/if}
