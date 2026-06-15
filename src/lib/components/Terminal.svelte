@@ -40,7 +40,7 @@
 <section class="md:col-span-8 flex flex-col pt-2 md:pl-4">
 	<h2 class="col-header mb-4">{$_('execProtocol')}</h2>
 
-	<figure class="glass-panel mt-2 animate-float-card group relative">
+	<figure class="glass-panel mt-2 group relative">
 		<figcaption
 			class="relative flex items-center justify-center border-b border-line/40 px-4 py-2 bg-ink/[0.03]"
 		>
