@@ -49,7 +49,7 @@
 				<div class="w-3 h-3 rounded-full bg-[#febc2e]"></div>
 				<div class="w-3 h-3 rounded-full bg-[#28c840]"></div>
 			</div>
-			<p class="col-header opacity-60 uppercase tracking-widest text-[10px]">
+			<p class="col-header">
 				{$_('terminalCommand')}
 			</p>
 		</figcaption>

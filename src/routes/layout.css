@@ -70,7 +70,7 @@
 
 /* Custom Utilities using Tailwind v4 @utility directive */
 @utility col-header {
-	@apply font-mono text-[10px] tracking-widest text-ink/60 uppercase select-none;
+	@apply font-mono text-[10px] tracking-widest text-ink/75 uppercase select-none;
 }
 
 @utility grid-line-bottom {
