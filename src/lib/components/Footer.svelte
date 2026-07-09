@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { springFly } from '$lib/transitions';
 	import { _ } from 'svelte-i18n';
+	import { GITHUB_REPO_URL } from '$lib/config';
 </script>
 
 <footer
@@ -14,7 +15,7 @@
 	</p>
 	<a
 		id="footer-license-link"
-		href="https://github.com/relvinarsenio/calyx/blob/master/LICENSE"
+		href="{GITHUB_REPO_URL}/blob/master/LICENSE"
 		target="_blank"
 		rel="noopener noreferrer"
 		class="hover:text-ink transition-colors underline underline-offset-4 decoration-line hover:decoration-ink"

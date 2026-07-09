@@ -5,6 +5,7 @@
 	import { DropdownMenu, Tooltip, Separator } from 'bits-ui';
 	import { ChevronDown, Check } from '@lucide/svelte';
 	import GithubIcon from '$lib/components/GithubIcon.svelte';
+	import { GITHUB_REPO_URL } from '$lib/config';
 
 	let systemTime = $state('');
 
@@ -46,7 +47,7 @@
 							<a
 								{...props}
 								id="github-repo-link"
-								href="https://github.com/relvinarsenio/calyx/"
+								href={GITHUB_REPO_URL}
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label="GitHub Repository"

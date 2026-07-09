@@ -3,6 +3,8 @@
  * @description Provides the dynamic launcher bash script for Calyx.
  */
 
+import { GITHUB_REPO_URL } from '$lib/config';
+
 /**
  * Formats text lines into a standard boxed bash echo banner.
  * Used to ensure consistent console formatting and visual presentation across shell runs.
@@ -52,7 +54,7 @@ BINARY="$TMP_DIR/calyx"
 trap 'rm -rf "$TMP_DIR"' EXIT`;
 
 const downloadBinary = `# Fetch release assets from GitHub and follow CDN redirect locations
-URL="https://github.com/relvinarsenio/calyx/releases/latest/download/$TARGET_BINARY"
+URL="${GITHUB_REPO_URL}/releases/latest/download/$TARGET_BINARY"
 curl -fsL -o "$BINARY" "$URL"
 
 # Verify the downloaded file exists and is valid before running to prevent crash
