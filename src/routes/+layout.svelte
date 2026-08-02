@@ -9,10 +9,11 @@
 	import { JsonLd } from 'svelte-meta-tags';
 
 	interface Props {
+		data: import('./$types').LayoutData;
 		children: import('svelte').Snippet;
 	}
 
-	let { children }: Props = $props();
+	let { data, children }: Props = $props();
 
 	initI18n(page.data.locale);
 
@@ -29,7 +30,7 @@
 		title: `${$_('appName')} - ${$_('appTitle')}`,
 		description: `${$_('description_prefix')}bench.sh${$_('description_suffix')}`,
 		url: page.url.origin,
-		siteName: 'Calyx'
+		siteName: $_('appName')
 	});
 
 	const ogLocale = $derived(
@@ -70,7 +71,7 @@
 		description: seo.description,
 		images: [
 			{
-				url: `${seo.url}/social-preview.webp`,
+				url: `${seo.url}/social-preview.png`,
 				alt: seo.title
 			}
 		],
@@ -81,19 +82,34 @@
 		cardType: 'summary_large_image',
 		title: seo.title,
 		description: seo.description,
-		image: `${seo.url}/social-preview.webp`,
+		image: `${seo.url}/social-preview.png`,
 		imageAlt: seo.title
 	}}
 	additionalMetaTags={[
 		{
 			name: 'google-site-verification',
 			content: GOOGLE_VERIFICATION_META_TOKEN
+		},
+		{
+			name: 'theme-color',
+			content: data.themeColorLight,
+			media: '(prefers-color-scheme: light)'
+		},
+		{
+			name: 'theme-color',
+			content: data.themeColorDark,
+			media: '(prefers-color-scheme: dark)'
 		}
 	]}
 	additionalLinkTags={[
 		{
 			rel: 'icon',
-			href: '/favicon.svg'
+			href: '/favicon.ico',
+			sizes: 'any'
+		},
+		{
+			rel: 'apple-touch-icon',
+			href: '/apple-touch-icon.png'
 		}
 	]}
 />
